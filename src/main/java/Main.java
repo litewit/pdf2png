@@ -1,13 +1,11 @@
 import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageTree;
 import org.apache.pdfbox.rendering.ImageType;
 import org.apache.pdfbox.rendering.PDFRenderer;
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.List;
-import javax.imageio.ImageIO;
 
 
 public class Main {
@@ -38,14 +36,9 @@ public class Main {
                 for (int page = 0; page < document.getNumberOfPages(); ++page) {
 
                     BufferedImage image = pdfRenderer.renderImageWithDPI(page, 300, ImageType.RGB);
-//                    String fileName = OUTPUT_DIR + "image-" + page + ".png";
-//                    ImageIO.write(image, fileName, 300);
-
-
-//                    BufferedImage image = page.();
-                    File outputfile = new File(destinationDir + fileName +"_"+ pageNumber +".png");
-                    System.out.println("Image Created -> "+ outputfile.getName());
-                    ImageIO.write(image, "png", outputfile);
+                    File outputFile = new File(destinationDir + fileName +"_"+ pageNumber +".png");
+                    System.out.println("Image Created -> "+ outputFile.getName());
+                    ImageIO.write(image, "png", outputFile);
                     pageNumber++;
                 }
                 document.close();

@@ -16,8 +16,8 @@ public class Main {
         System.out.println("hello world");
 
         try {
-            String sourceDir = "/Users/quadrixm/Bar/Java/pdf2image/test_pdf_1.pdf"; // Pdf files are read from this folder
-            String destinationDir = "/Users/quadrixm/Bar/Java/pdf2image/Converted_PdfFiles_to_Image/"; // converted images from pdf document are saved here
+            String sourceDir = "test_pdf_1.pdf"; // Pdf files are read from this folder
+            String destinationDir = "Converted_PdfFiles_to_Image/"; // converted images from pdf document are saved here
 
             File sourceFile = new File(sourceDir);
             File destinationFile = new File(destinationDir);

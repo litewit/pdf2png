@@ -11,13 +11,34 @@ import java.io.File;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("hello world");
 
+        Long currentTimeMillis = System.currentTimeMillis();
+
+        File dir = new File(".");
+        File[] filesList = dir.listFiles();
+        for (File file : filesList) {
+            if (file.isFile() && getFileExtension(file.getName()).equalsIgnoreCase("pdf")) {
+                convert(file);
+            }
+        }
+
+        Long diff = System.currentTimeMillis() - currentTimeMillis;
+
+        System.out.printf(diff.toString());
+
+    }
+
+    private static String getFileExtension(String fileName) {
+        if (fileName == null || fileName.equals(""))
+            return "undefined";
+        int dotIndex = fileName.lastIndexOf(".");
+        return (dotIndex == -1) ? "" : fileName.substring(dotIndex + 1);
+    }
+
+    private static void convert(File sourceFile) {
         try {
-            String sourceDir = "test_pdf_1.pdf"; // Pdf files are read from this folder
-            String destinationDir = "Converted_PdfFiles_to_Image/"; // converted images from pdf document are saved here
+            String destinationDir = sourceFile.getName().replace(".pdf", "") + "/"; // converted images from pdf document are saved here
 
-            File sourceFile = new File(sourceDir);
             File destinationFile = new File(destinationDir);
             if (!destinationFile.exists()) {
                 destinationFile.mkdir();

@@ -1,3 +1,5 @@
+package com.litewit.pdf2png;
+
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPageTree;
 import org.apache.pdfbox.rendering.ImageType;

@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 
-public class Main {
+public class App {
 
     public static void main(String[] args) {
 

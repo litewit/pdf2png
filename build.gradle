@@ -12,13 +12,27 @@ repositories {
     mavenCentral()
 }
 
-jar {
+//jar {
+//    manifest {
+//        attributes 'Main-Class': 'com.litewit.pdf2png.App'
+//    }
+//    from {
+//        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+//    }
+//}
+
+task fatJar(type: Jar) {
     manifest {
-        attributes 'Main-Class': 'com.litewit.pdf2png.Main'
+        attributes 'Implementation-Title': 'Pdf to Png converter',
+                'Implementation-Version': version,
+                'Main-Class': 'com.litewit.pdf2png.App'
     }
+    baseName = project.name
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
 }
 
 dependencies {
-    implementation 'org.apache.pdfbox:pdfbox:2.0.14'
+    compile 'org.apache.pdfbox:pdfbox:2.0.14'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }

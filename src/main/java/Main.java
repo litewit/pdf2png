@@ -16,15 +16,17 @@ public class Main {
 
         File dir = new File(".");
         File[] filesList = dir.listFiles();
-        for (File file : filesList) {
-            if (file.isFile() && getFileExtension(file.getName()).equalsIgnoreCase("pdf")) {
-                convert(file);
+        if (filesList != null) {
+            for (File file : filesList) {
+                if (file.isFile() && getFileExtension(file.getName()).equalsIgnoreCase("pdf")) {
+                    convert(file);
+                }
             }
         }
 
-        Long diff = System.currentTimeMillis() - currentTimeMillis;
+        long diff = System.currentTimeMillis() - currentTimeMillis;
 
-        System.out.printf(diff.toString());
+        System.out.print(diff);
 
     }
 
@@ -41,8 +43,9 @@ public class Main {
 
             File destinationFile = new File(destinationDir);
             if (!destinationFile.exists()) {
-                destinationFile.mkdir();
-                System.out.println("Folder Created -> "+ destinationFile.getAbsolutePath());
+                boolean fileCreated = destinationFile.mkdir();
+                if (fileCreated)
+                    System.out.println("Folder Created -> "+ destinationFile.getAbsolutePath());
             }
             if (sourceFile.exists()) {
                 System.out.println("Images copied to Folder: "+ destinationFile.getName());

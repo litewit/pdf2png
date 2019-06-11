@@ -119,6 +119,9 @@ gradle-app.setting
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapper.jar
 
+# Avoid ignoring pdf2png jar file (.jar files are usually ignored)
+!pdf2png-*.jar
+
 # Cache of project
 .gradletasknamecache
 

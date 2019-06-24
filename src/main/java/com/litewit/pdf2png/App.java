@@ -61,10 +61,10 @@ public class App {
                 int pageNumber = 1;
                 for (int page = 0; page < document.getNumberOfPages(); ++page) {
 
-                    BufferedImage image = pdfRenderer.renderImageWithDPI(page, 300, ImageType.RGB);
-                    File outputFile = new File(destinationDir + fileName +"_"+ pageNumber +".png");
+                    BufferedImage image = pdfRenderer.renderImageWithDPI(page, 150, ImageType.RGB);
+                    File outputFile = new File(destinationDir + fileName +"_"+ pageNumber +".jpg");
                     System.out.println("Image Created -> "+ outputFile.getName());
-                    ImageIO.write(image, "png", outputFile);
+                    ImageIO.write(image, "jpg", outputFile);
                     pageNumber++;
                 }
                 document.close();
